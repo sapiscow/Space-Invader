@@ -1,7 +1,5 @@
 using Agate.MVC.Base;
-using Sapi.SpaceInvader.Gameplay.Plane;
 using Sapi.SpaceInvader.Gameplay.Plane.PlayerPlane;
-using UnityEngine;
 
 namespace Sapi.SpaceInvader.Gameplay.Spawner
 {
