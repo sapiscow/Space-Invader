@@ -42,7 +42,9 @@ namespace Sapi.SpaceInvader.Gameplay
         protected override IEnumerator LaunchScene()
         {
             _inputController.Init();
+
             _spawnerController.SpawnPlayerPlane(0);
+            _spawnerController.SpawnPlayerPlane(1);
 
             yield return null;
         }

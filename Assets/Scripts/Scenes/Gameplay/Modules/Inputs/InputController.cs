@@ -2,7 +2,7 @@ using Agate.MVC.Base;
 
 namespace Sapi.SpaceInvader.Gameplay.Inputs
 {
-    public class InputController : ObjectController<InputController, InputView>
+    public class InputController : ObjectController<InputController, InputModel, IInputModel, InputView>
     {
         public void Init()
         {

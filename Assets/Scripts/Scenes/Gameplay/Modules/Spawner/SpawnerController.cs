@@ -1,5 +1,7 @@
 using Agate.MVC.Base;
+using Sapi.SpaceInvader.Gameplay.Plane;
 using Sapi.SpaceInvader.Gameplay.Plane.PlayerPlane;
+using UnityEngine;
 
 namespace Sapi.SpaceInvader.Gameplay.Spawner
 {
@@ -10,10 +12,12 @@ namespace Sapi.SpaceInvader.Gameplay.Spawner
             PlayerPlaneController playerPlane = _model.GetPlayerPlane(playerIndex);
             if (playerPlane == null)
             {
-                playerPlane = new PlayerPlaneController();
                 PlayerPlaneModel model = new PlayerPlaneModel();
                 model.SetPlayerIndex(playerIndex);
+
                 PlayerPlaneView view = _view.InstantiatePlayerPlane();
+                
+                playerPlane = new PlayerPlaneController();
                 playerPlane.Init(model, view);
 
                 _model.RegisterPlayerPlane(playerPlane);

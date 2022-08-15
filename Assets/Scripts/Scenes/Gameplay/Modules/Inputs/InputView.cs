@@ -3,14 +3,16 @@ using UnityEngine;
 
 namespace Sapi.SpaceInvader.Gameplay.Inputs
 {
-    public class InputView : BaseView
+    public class InputView : ObjectView<IInputModel>
     {
         [SerializeField] private bool _enableDebug;
-        [SerializeField] private InputPlayerKey[] _inputKeys;
 
         public event System.Action<int> OnLeftKeyPressed;
         public event System.Action<int> OnRightKeyPressed;
         public event System.Action<int> OnShootKeyPressed;
+
+        protected override void InitRenderModel(IInputModel model) { }
+        protected override void UpdateRenderModel(IInputModel model) { }
 
         private void Awake()
         {
@@ -22,9 +24,14 @@ namespace Sapi.SpaceInvader.Gameplay.Inputs
 
         private void Update()
         {
-            for (int i = 0; i < _inputKeys.Length; i++)
+            if (_model == null || _model.InputKeys == null)
             {
-                InputPlayerKey input = _inputKeys[i];
+                return;
+            }
+
+            for (int i = 0; i < _model.InputKeys.Length; i++)
+            {
+                InputPlayerKey input = _model.InputKeys[i];
                 
                 if (Input.GetKey(input.LeftKey)) OnLeftKeyPressed?.Invoke(i);
                 if (Input.GetKey(input.RightKey)) OnRightKeyPressed?.Invoke(i);
