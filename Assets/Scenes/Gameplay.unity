@@ -207,6 +207,37 @@ Transform:
   m_Father: {fileID: 1421521196}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &710269855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710269856}
+  m_Layer: 0
+  m_Name: Bullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710269856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710269855}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 791096710}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791096709
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +268,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 910969513}
+  - {fileID: 710269856}
   m_Father: {fileID: 1421521196}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -253,7 +285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerPlanePrefab: {fileID: -8486253577281446915, guid: 1d90ab439c118d04f980249679144ca8, type: 3}
+  _bulletPrefab: {fileID: 9168990413985461098, guid: e7265fbbd85d32c48b414e8e31f19b15, type: 3}
   _playerParent: {fileID: 910969513}
+  _bulletParent: {fileID: 710269856}
 --- !u!1 &910969512
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,13 +364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enableDebug: 0
-  _inputKeys:
-  - _leftKey: 97
-    _rightKey: 100
-    _shootKey: 119
-  - _leftKey: 276
-    _rightKey: 275
-    _shootKey: 273
 --- !u!1 &1119247761
 GameObject:
   m_ObjectHideFlags: 0

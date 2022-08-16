@@ -13,6 +13,7 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.PlayerPlane
 
         public Color Color => _playerPlaneConfig.PlaneColors[PlayerIndex];
         public float MoveSpeed => _playerPlaneConfig.MoveSpeed;
+        public float BulletSpeed => _playerPlaneConfig.BulletSpeed;
 
         public PlayerPlaneModel()
         {

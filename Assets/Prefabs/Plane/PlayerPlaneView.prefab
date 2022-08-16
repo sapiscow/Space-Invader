@@ -57,6 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 206c84e2e2dbeca4f80dfefd97088e48, type: 3}
+--- !u!4 &1817144944849168460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 278552402313882156, guid: 206c84e2e2dbeca4f80dfefd97088e48, type: 3}
+  m_PrefabInstance: {fileID: 1939457542679790176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8885913284962596878 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7042307455153289838, guid: 206c84e2e2dbeca4f80dfefd97088e48, type: 3}
@@ -74,7 +79,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b13e3045d27c294abf98ab9d8d72997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 4
-  _planeColors:
-  - {r: 0, g: 0.5019608, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0.5019608, a: 1}
+  _bulletSpawnPosition: {fileID: 1817144944849168460}

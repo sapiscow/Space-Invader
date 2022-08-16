@@ -10,6 +10,7 @@ namespace Sapi.SpaceInvader.Gameplay
         protected override void Connect()
         {
             Subscribe<InputMessage>(OnInputKeyPressed);
+            Subscribe<ShootMessage>(OnPlaneCommandedShoot);
         }
 
         protected override void Disconnect()
@@ -20,6 +21,11 @@ namespace Sapi.SpaceInvader.Gameplay
         private void OnInputKeyPressed(InputMessage message)
         {
             _spawnerController.OnInputKeyPressed(message.PlayerIndex, message.InputKey);
+        }
+
+        private void OnPlaneCommandedShoot(ShootMessage message)
+        {
+            _spawnerController.SpawnBullet(message.ShootPosition, message.BulletSpeed);
         }
     }
 }
