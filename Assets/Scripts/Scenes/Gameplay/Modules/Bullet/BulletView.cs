@@ -3,9 +3,14 @@ using UnityEngine;
 
 namespace Sapi.SpaceInvader.Gameplay.Bullet
 {
-    public class BulletView : ObjectView<IBulletModel>
+    public class BulletView : ObjectView<IBulletModel>, IShootable
     {
         private const float _despawnY = 5.5f;
+
+        public bool IsAlly => _model.IsFromAlly;
+
+        public event System.Action<IShootable> OnCollided;
+        public event System.Action OnShootedEvent;
 
         protected override void InitRenderModel(IBulletModel model) { }
         protected override void UpdateRenderModel(IBulletModel model) { }
@@ -19,5 +24,15 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
                 gameObject.SetActive(false);
             }
         }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider.TryGetComponent(out IShootable shootable))
+            {
+                OnCollided?.Invoke(shootable);
+            }
+        }
+
+        public void OnShooted() => OnShootedEvent?.Invoke();
     }
 }

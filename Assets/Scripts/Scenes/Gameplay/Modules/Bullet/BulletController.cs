@@ -11,11 +11,26 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
 		{
 		    _model = model;
 		    SetView(view);
-		}
+
+            _view.OnCollided += OnCollided;
+        }
 
         public void SetViewActive(bool isActive) => _view.gameObject.SetActive(isActive);
 
-        public void SetPosition(Vector2 position) => _view.transform.position = position;
-        public void SetSpeed(float speed) => _model.SetSpeed(speed);
+        public void Spawn(Vector2 position, bool isAlly, float speed)
+        {
+            _view.transform.position = position;
+            _model.SetFromAllyState(isAlly);
+            _model.SetSpeed(speed);
+        }
+
+        public void OnCollided(IShootable shootable)
+        {
+            if (shootable.IsAlly != _model.IsFromAlly)
+            {
+                SetViewActive(false);
+                shootable.OnShooted();
+            }
+        }
     }
 }

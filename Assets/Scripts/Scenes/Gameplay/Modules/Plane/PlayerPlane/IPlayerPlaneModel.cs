@@ -8,6 +8,6 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.PlayerPlane
         int PlayerIndex { get; }
         public Color Color { get; }
 
-        public float MoveSpeed { get; }
+        float MoveSpeed { get; }
     }
 }

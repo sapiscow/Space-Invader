@@ -1,11 +1,13 @@
 using Agate.MVC.Base;
-using Sapi.SpaceInvader.Gameplay.Spawner;
+using Sapi.SpaceInvader.Gameplay.Spawner.BulletSpawner;
+using Sapi.SpaceInvader.Gameplay.Spawner.PlayerSpawner;
 
 namespace Sapi.SpaceInvader.Gameplay
 {
     public class GameplayInputConnector : BaseConnector
     {
-        private SpawnerController _spawnerController;
+        private PlayerSpawnerController _playerSpawnerController;
+        private BulletSpawnerController _bulletSpawnerController;
 
         protected override void Connect()
         {
@@ -20,12 +22,12 @@ namespace Sapi.SpaceInvader.Gameplay
 
         private void OnInputKeyPressed(InputMessage message)
         {
-            _spawnerController.OnInputKeyPressed(message.PlayerIndex, message.InputKey);
+            _playerSpawnerController.OnInputKeyPressed(message.PlayerIndex, message.InputKey);
         }
 
         private void OnPlaneCommandedShoot(ShootMessage message)
         {
-            _spawnerController.SpawnBullet(message.ShootPosition, message.BulletSpeed);
+            _bulletSpawnerController.SpawnBullet(message.ShootPosition, message.IsFromAlly, message.BulletSpeed);
         }
     }
 }

@@ -6,11 +6,6 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.PlayerPlane
     {
         public int PlayerIndex => _model.PlayerIndex;
 
-        private void Shoot()
-        {
-            Publish(new ShootMessage(_view.BulletSpawnPosition, _model.BulletSpeed));
-        }
-
         public void OnInputKeyPressed(InputKey inputKey)
         {
             switch (inputKey)

@@ -1,14 +1,12 @@
 using Agate.MVC.Base;
-using Sapi.SpaceInvader.Gameplay.Bullet;
 using Sapi.SpaceInvader.Gameplay.Plane.PlayerPlane;
 using System.Collections.Generic;
 
-namespace Sapi.SpaceInvader.Gameplay.Spawner
+namespace Sapi.SpaceInvader.Gameplay.Spawner.PlayerSpawner
 {
-    public class SpawnerModel : BaseModel
+    public class PlayerSpawnerModel : BaseModel
     {
         private List<PlayerPlaneController> _playerPlanes = new List<PlayerPlaneController>();
-        private List<BulletController> _bullets = new List<BulletController>();
 
         public void RegisterPlayerPlane(PlayerPlaneController playerPlane)
             => _playerPlanes.Add(playerPlane);
@@ -22,11 +20,5 @@ namespace Sapi.SpaceInvader.Gameplay.Spawner
 
             return null;
         }
-
-        public void AddBulletToPool(BulletController bullet)
-            => _bullets.Add(bullet);
-
-        public BulletController GetBulletFromPool()
-            => _bullets.Find(b => !b.IsViewActive);
     }
 }

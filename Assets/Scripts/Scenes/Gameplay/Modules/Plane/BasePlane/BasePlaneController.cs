@@ -6,7 +6,7 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.BasePlane
         where TController : BasePlaneController<TController, TModel, TInterfaceModel, TView>
         where TModel : BasePlaneModel, TInterfaceModel, new()
         where TInterfaceModel : IPlaneModel
-        where TView : ObjectView<TInterfaceModel>
+        where TView : BasePlaneView<TInterfaceModel>
     {
         public bool IsViewActive => _view.gameObject.activeSelf;
 
@@ -14,8 +14,20 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.BasePlane
 		{
 		    _model = model;
 		    SetView(view);
-		}
+
+            _view.OnShootedEvent += OnShooted;
+        }
 
         public void SetViewActive(bool isActive) => _view.gameObject.SetActive(isActive);
+
+        protected virtual void Shoot()
+        {
+            Publish(new ShootMessage(_view.BulletSpawnPosition, _model.IsAlly, _model.BulletSpeed));
+        }
+
+        public virtual void OnShooted()
+        {
+            SetViewActive(false);
+        }
     }
 }
