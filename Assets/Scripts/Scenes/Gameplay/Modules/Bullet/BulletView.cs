@@ -10,7 +10,7 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
         public bool IsAlly => _model.IsFromAlly;
 
         public event System.Action<IShootable> OnCollided;
-        public event System.Action OnShootedEvent;
+        public event System.Action OnShooted;
 
         protected override void InitRenderModel(IBulletModel model) { }
         protected override void UpdateRenderModel(IBulletModel model) { }
@@ -33,6 +33,6 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
             }
         }
 
-        public void OnShooted() => OnShootedEvent?.Invoke();
+        public void OnShootedTriggered() => OnShooted?.Invoke();
     }
 }

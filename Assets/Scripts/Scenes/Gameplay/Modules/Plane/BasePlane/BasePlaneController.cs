@@ -15,7 +15,7 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.BasePlane
 		    _model = model;
 		    SetView(view);
 
-            _view.OnShootedEvent += OnShooted;
+            _view.OnShooted += OnShooted;
         }
 
         public void SetViewActive(bool isActive) => _view.gameObject.SetActive(isActive);

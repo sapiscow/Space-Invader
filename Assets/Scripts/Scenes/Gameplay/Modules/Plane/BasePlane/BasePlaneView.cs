@@ -14,7 +14,7 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.BasePlane
         public Vector2 BulletSpawnPosition => _bulletSpawnPosition.position;
         public bool IsAlly => _model.IsAlly;
 
-        public event System.Action OnShootedEvent;
+        public event System.Action OnShooted;
 
         protected override void InitRenderModel(TModel model) { }
         protected override void UpdateRenderModel(TModel model) { }
@@ -24,6 +24,6 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.BasePlane
             _renderer = GetComponent<SpriteRenderer>();
         }
 
-        public void OnShooted() => OnShootedEvent?.Invoke();
+        public void OnShootedTriggered() => OnShooted?.Invoke();
     }
 }

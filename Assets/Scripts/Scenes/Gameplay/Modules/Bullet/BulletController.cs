@@ -29,7 +29,7 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
             if (shootable.IsAlly != _model.IsFromAlly)
             {
                 SetViewActive(false);
-                shootable.OnShooted();
+                shootable.OnShootedTriggered();
             }
         }
     }

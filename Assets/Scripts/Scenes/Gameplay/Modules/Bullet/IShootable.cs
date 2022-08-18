@@ -4,6 +4,6 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
     {
         bool IsAlly { get; }
         
-        void OnShooted();
+        void OnShootedTriggered();
     }
 }
