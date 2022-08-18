@@ -13,6 +13,8 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.PlayerPlane
         protected override void InitRenderModel(IPlayerPlaneModel model)
         {
             _renderer.color = _model.Color;
+
+            transform.name = $"Player {model.PlayerIndex}";
         }
     }
 }

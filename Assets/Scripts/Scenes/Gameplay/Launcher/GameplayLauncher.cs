@@ -2,6 +2,7 @@ using Agate.MVC.Base;
 using Agate.MVC.Core;
 using Sapi.SpaceInvader.Boot;
 using Sapi.SpaceInvader.Gameplay.Inputs;
+using Sapi.SpaceInvader.Gameplay.Level;
 using Sapi.SpaceInvader.Gameplay.Spawner.BulletSpawner;
 using Sapi.SpaceInvader.Gameplay.Spawner.EnemySpawner;
 using Sapi.SpaceInvader.Gameplay.Spawner.PlayerSpawner;
@@ -11,10 +12,11 @@ namespace Sapi.SpaceInvader.Gameplay
 {
     public class GameplayLauncher : BaseSceneLauncher<GameplayLauncher, GameplayView>
     {
+        private LevelController _levelController;
+        private InputController _inputController;
         private PlayerSpawnerController _playerSpawnerController;
         private EnemySpawnerController _enemySpawnerController;
         private BulletSpawnerController _bulletSpawnerController;
-        private InputController _inputController;
 
         public override string SceneName => "Gameplay";
 
@@ -22,7 +24,8 @@ namespace Sapi.SpaceInvader.Gameplay
         {
             return new IConnector[]
             {
-                new GameplayInputConnector()
+                new LevelConnector(),
+                new InputConnector()
             };
         }
 
@@ -30,25 +33,28 @@ namespace Sapi.SpaceInvader.Gameplay
         {
             return new IController[]
             {
+                new LevelController(),
+                new InputController(),
                 new PlayerSpawnerController(),
                 new EnemySpawnerController(),
-                new BulletSpawnerController(),
-                new InputController()
+                new BulletSpawnerController()
             };
         }
 
         protected override IEnumerator InitSceneObject()
         {
+            _inputController.SetView(_view.InputView);
             _playerSpawnerController.SetView(_view.PlayerSpawnerView);
             _enemySpawnerController.SetView(_view.EnemySpawnerView);
             _bulletSpawnerController.SetView(_view.BulletSpawnerView);
-            _inputController.SetView(_view.InputView);
 
             yield return null;
         }
 
         protected override IEnumerator LaunchScene()
         {
+            _levelController.StartLevel();
+
             _inputController.Init();
 
             _playerSpawnerController.SpawnPlayerPlane(0);

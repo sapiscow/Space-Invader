@@ -6,8 +6,18 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.EnemyPlane
     {
         private float _bulletSpeed;
 
+        public int X { get; private set; }
+        public int Y { get; private set; }
+
         public override bool IsAlly => false;
         public override float BulletSpeed => _bulletSpeed;
+
+        public void SetGridPoint(int x, int y)
+        {
+            X = x;
+            Y = y;
+            SetDataAsDirty();
+        }
 
         public void SetBulletSpeed(int bulletSpeed)
         {

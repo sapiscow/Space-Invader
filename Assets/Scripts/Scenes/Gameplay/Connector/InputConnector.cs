@@ -4,7 +4,7 @@ using Sapi.SpaceInvader.Gameplay.Spawner.PlayerSpawner;
 
 namespace Sapi.SpaceInvader.Gameplay
 {
-    public class GameplayInputConnector : BaseConnector
+    public class InputConnector : BaseConnector
     {
         private PlayerSpawnerController _playerSpawnerController;
         private BulletSpawnerController _bulletSpawnerController;
