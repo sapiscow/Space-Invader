@@ -1,4 +1,5 @@
 using Agate.MVC.Base;
+using Sapi.SpaceInvader.Audios;
 using Sapi.SpaceInvader.Gameplay.Spawner.BulletSpawner;
 using Sapi.SpaceInvader.Gameplay.Spawner.PlayerSpawner;
 
@@ -6,6 +7,8 @@ namespace Sapi.SpaceInvader.Gameplay
 {
     public class InputConnector : BaseConnector
     {
+        private AudioSfxController _audioSfxController;
+
         private PlayerSpawnerController _playerSpawnerController;
         private BulletSpawnerController _bulletSpawnerController;
 
@@ -28,6 +31,7 @@ namespace Sapi.SpaceInvader.Gameplay
         private void OnPlaneCommandedShoot(ShootMessage message)
         {
             _bulletSpawnerController.SpawnBullet(message.ShootPosition, message.IsFromAlly, message.BulletSpeed);
+            _audioSfxController.PlaySfx(AudioSfx.Shoot);
         }
     }
 }

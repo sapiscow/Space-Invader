@@ -1,5 +1,6 @@
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using Sapi.SpaceInvader.Audios;
 using System.Collections;
 
 namespace Sapi.SpaceInvader.Boot
@@ -13,7 +14,10 @@ namespace Sapi.SpaceInvader.Boot
 
         protected override IController[] GetDependencies()
         {
-            return null;
+            return new IController[]
+            {
+                new AudioSfxController()
+            };
         }
 
         protected override IEnumerator StartInit()

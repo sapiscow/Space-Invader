@@ -1,4 +1,5 @@
 using Agate.MVC.Base;
+using Sapi.SpaceInvader.Audios;
 using Sapi.SpaceInvader.Gameplay.Level;
 using Sapi.SpaceInvader.Gameplay.Spawner.EnemySpawner;
 
@@ -6,6 +7,8 @@ namespace Sapi.SpaceInvader.Gameplay
 {
     public class LevelConnector : BaseConnector
     {
+        private AudioSfxController _audioSfxController;
+
         private LevelController _levelController;
         private EnemySpawnerController _enemySpawnerController;
 
@@ -30,6 +33,7 @@ namespace Sapi.SpaceInvader.Gameplay
         private void OnEnemyKilled(EnemyKilledMessage message)
         {
             _enemySpawnerController.OnEnemyKilled();
+            _audioSfxController.PlaySfx(AudioSfx.Killed);
         }
 
         private void OnEnemiesCleared(EnemiesClearedMessage message)

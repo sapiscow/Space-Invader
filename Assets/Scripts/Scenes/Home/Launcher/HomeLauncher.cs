@@ -1,5 +1,6 @@
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using Sapi.SpaceInvader.Audios;
 using Sapi.SpaceInvader.Boot;
 using System.Collections;
 
@@ -7,6 +8,8 @@ namespace Sapi.SpaceInvader.Home
 {
     public class HomeLauncher : BaseSceneLauncher<HomeLauncher, HomeView>
     {
+        private AudioSfxController _audioSfxController;
+
         public override string SceneName => "Home";
 
         protected override IConnector[] GetSceneConnectors()
@@ -34,6 +37,7 @@ namespace Sapi.SpaceInvader.Home
         private void OnPlayButtonClicked()
         {
             GetLoader().LoadScene("Gameplay");
+            _audioSfxController.PlaySfx(AudioSfx.Shoot);
         }
     }
 }
