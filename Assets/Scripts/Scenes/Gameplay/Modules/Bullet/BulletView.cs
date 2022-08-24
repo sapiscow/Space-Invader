@@ -17,6 +17,11 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
 
         private void Update()
         {
+            if (_model.IsPaused)
+            {
+                return;
+            }
+
             transform.Translate(0f, _model.Speed * Time.deltaTime, 0f);
 
             if (transform.position.y >= _despawnY)

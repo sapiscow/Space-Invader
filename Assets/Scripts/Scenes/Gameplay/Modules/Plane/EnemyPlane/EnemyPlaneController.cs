@@ -5,6 +5,8 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.EnemyPlane
 {
     public class EnemyPlaneController : BasePlaneController<EnemyPlaneController, EnemyPlaneModel, IEnemyPlaneModel, EnemyPlaneView>
     {
+        public int ScoreValue => _model.ScoreValue;
+
         public void SetGridPoint(int x, int y)
             => _model.SetGridPoint(x, y);
 
@@ -17,7 +19,7 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.EnemyPlane
 
             if (!IsViewActive)
             {
-                Publish(new EnemyKilledMessage(_model.X, _model.Y));
+                Publish(new EnemyKilledMessage(_model.X, _model.Y, _model.ScoreValue));
             }
         }
     }

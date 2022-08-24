@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Sapi.SpaceInvader.Gameplay.Spawner.EnemySpawner
 {
-    public class EnemySpawnerController : ObjectController<EnemySpawnerController, EnemySpawnerModel, EnemySpawnerView>
+    public class EnemySpawnerController : ObjectController<EnemySpawnerController, EnemySpawnerModel, IEnemySpawnerModel, EnemySpawnerView>
     {
         public void SpawnGroupEnemies()
         {
-            bool hasMiddle = _model.GridWidth % 2 == 1;
-            float startColumn = -Mathf.Floor(_model.GridWidth / 2) + (hasMiddle ? 0 : 0.5f);
+            bool isOdd = _model.GridWidth % 2 == 1;
+            float startColumn = -Mathf.Floor(_model.GridWidth / 2) + (isOdd ? 0 : 0.5f);
             float currentColumn = startColumn;
 
             for (int y = 0; y < _model.GridHeight; y++)
@@ -42,6 +42,9 @@ namespace Sapi.SpaceInvader.Gameplay.Spawner.EnemySpawner
 
             _model.SetSpawnedEnemyCount(_model.SpawnedEnemyCount + 1);
         }
+
+        public void SetPauseState(bool isPaused)
+            => _model.SetPauseState(isPaused);
 
         public void OnEnemyKilled()
         {

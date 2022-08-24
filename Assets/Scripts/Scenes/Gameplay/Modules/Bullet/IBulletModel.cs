@@ -6,5 +6,6 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
     {
         bool IsFromAlly { get; }
         float Speed { get; }
+        bool IsPaused { get; }
     }
 }

@@ -16,7 +16,7 @@ namespace Sapi.SpaceInvader.Boot
         {
             return new IController[]
             {
-                new AudioSfxController()
+                new AudioController()
             };
         }
 

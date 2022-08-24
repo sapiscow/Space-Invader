@@ -22,5 +22,13 @@ namespace Sapi.SpaceInvader.Gameplay.Spawner.BulletSpawner
             bullet.Spawn(position, isAlly, speed);
             bullet.SetViewActive(true);
         }
+
+        public void SetBulletsPauseState(bool isPaused)
+        {
+            foreach (var bullet in _model.Bullets)
+            {
+                bullet.SetPauseState(isPaused);
+            }
+        }
     }
 }

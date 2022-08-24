@@ -24,6 +24,9 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
             _model.SetSpeed(speed);
         }
 
+        public void SetPauseState(bool isPaused)
+            => _model.SetPauseState(isPaused);
+
         public void OnCollided(IShootable shootable)
         {
             if (shootable.IsAlly != _model.IsFromAlly)

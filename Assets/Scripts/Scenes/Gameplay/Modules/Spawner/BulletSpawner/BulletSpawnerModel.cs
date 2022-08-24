@@ -8,6 +8,8 @@ namespace Sapi.SpaceInvader.Gameplay.Spawner.BulletSpawner
     {
         private List<BulletController> _bulletPool = new List<BulletController>();
 
+        public BulletController[] Bullets => _bulletPool.ToArray();
+
         public void AddBulletToPool(BulletController bullet)
             => _bulletPool.Add(bullet);
 

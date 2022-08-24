@@ -8,6 +8,7 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.EnemyPlane
 
         public int X { get; private set; }
         public int Y { get; private set; }
+        public int ScoreValue { get; private set; } = 5;
 
         public override bool IsAlly => false;
         public override float BulletSpeed => _bulletSpeed;

@@ -1,6 +1,6 @@
 namespace Sapi.SpaceInvader.Audios
 {
-    public enum AudioSfx
+    public enum AudioSfxName
     {
         Shoot,
         Killed

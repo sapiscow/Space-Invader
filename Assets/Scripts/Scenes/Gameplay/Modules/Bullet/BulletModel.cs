@@ -6,6 +6,7 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
     {
         public bool IsFromAlly { get; private set; }
         public float Speed { get; private set; }
+        public bool IsPaused { get; private set; }
 
         public void SetFromAllyState(bool isAlly)
         {
@@ -16,6 +17,12 @@ namespace Sapi.SpaceInvader.Gameplay.Bullet
         public void SetSpeed(float speed)
         {
             Speed = speed;
+            SetDataAsDirty();
+        }
+
+        public void SetPauseState(bool isPaused)
+        {
+            IsPaused = isPaused;
             SetDataAsDirty();
         }
     }

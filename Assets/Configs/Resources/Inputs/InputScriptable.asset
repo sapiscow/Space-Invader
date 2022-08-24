@@ -19,3 +19,9 @@ MonoBehaviour:
   - _leftKey: 276
     _rightKey: 275
     _shootKey: 273
+  - _leftKey: 102
+    _rightKey: 104
+    _shootKey: 116
+  - _leftKey: 106
+    _rightKey: 108
+    _shootKey: 105

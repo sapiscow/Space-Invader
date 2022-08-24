@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Sapi.SpaceInvader.Gameplay.Spawner.EnemySpawner
 {
-    public class EnemySpawnerModel : BaseModel
+    public class EnemySpawnerModel : BaseModel, IEnemySpawnerModel
     {
         private const string _enemySpawnerConfigPath = "Spawner/EnemySpawnerScriptable";
 
@@ -13,9 +13,12 @@ namespace Sapi.SpaceInvader.Gameplay.Spawner.EnemySpawner
         private List<EnemyPlaneController> _enemyPool = new List<EnemyPlaneController>();
         private int _spawnedEnemyCount;
 
+        public bool IsPaused { get; private set; }
+
         public int GridWidth => _enemySpawnerConfig.Width;
         public int GridHeight => _enemySpawnerConfig.Height;
         public int SpawnedEnemyCount => _spawnedEnemyCount;
+        public float MoveSpeed => _enemySpawnerConfig.MoveSpeed;
 
         public EnemySpawnerModel()
         {
@@ -30,5 +33,11 @@ namespace Sapi.SpaceInvader.Gameplay.Spawner.EnemySpawner
 
         public void SetSpawnedEnemyCount(int count)
             => _spawnedEnemyCount = count;
+
+        public void SetPauseState(bool isPaused)
+        {
+            IsPaused = isPaused;
+            SetDataAsDirty();
+        }
     }
 }

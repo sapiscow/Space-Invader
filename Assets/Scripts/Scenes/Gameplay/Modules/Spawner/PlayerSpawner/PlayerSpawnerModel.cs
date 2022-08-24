@@ -8,6 +8,8 @@ namespace Sapi.SpaceInvader.Gameplay.Spawner.PlayerSpawner
     {
         private List<PlayerPlaneController> _playerPlanes = new List<PlayerPlaneController>();
 
+        public int MaxPlayer { get; private set; } = 4;
+
         public void RegisterPlayerPlane(PlayerPlaneController playerPlane)
             => _playerPlanes.Add(playerPlane);
             

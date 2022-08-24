@@ -6,5 +6,6 @@ namespace Sapi.SpaceInvader.Gameplay.Plane.EnemyPlane
     {
         int X { get; }
         int Y { get; }
+        int ScoreValue { get; }
     }
 }

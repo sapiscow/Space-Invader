@@ -7,7 +7,7 @@ namespace Sapi.SpaceInvader.Gameplay
 {
     public class InputConnector : BaseConnector
     {
-        private AudioSfxController _audioSfxController;
+        private AudioController _audioController;
 
         private PlayerSpawnerController _playerSpawnerController;
         private BulletSpawnerController _bulletSpawnerController;
@@ -31,7 +31,7 @@ namespace Sapi.SpaceInvader.Gameplay
         private void OnPlaneCommandedShoot(ShootMessage message)
         {
             _bulletSpawnerController.SpawnBullet(message.ShootPosition, message.IsFromAlly, message.BulletSpeed);
-            _audioSfxController.PlaySfx(AudioSfx.Shoot);
+            _audioController.PlaySfx(AudioSfxName.Shoot);
         }
     }
 }

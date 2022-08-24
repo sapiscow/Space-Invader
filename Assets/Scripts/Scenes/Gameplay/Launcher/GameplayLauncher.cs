@@ -1,8 +1,10 @@
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using Sapi.SpaceInvader.Audios;
 using Sapi.SpaceInvader.Boot;
 using Sapi.SpaceInvader.Gameplay.Inputs;
 using Sapi.SpaceInvader.Gameplay.Level;
+using Sapi.SpaceInvader.Gameplay.Score;
 using Sapi.SpaceInvader.Gameplay.Spawner.BulletSpawner;
 using Sapi.SpaceInvader.Gameplay.Spawner.EnemySpawner;
 using Sapi.SpaceInvader.Gameplay.Spawner.PlayerSpawner;
@@ -12,7 +14,10 @@ namespace Sapi.SpaceInvader.Gameplay
 {
     public class GameplayLauncher : BaseSceneLauncher<GameplayLauncher, GameplayView>
     {
+        private AudioController _audioController;
+
         private LevelController _levelController;
+        private ScoreController _scoreController;
         private InputController _inputController;
         private PlayerSpawnerController _playerSpawnerController;
         private EnemySpawnerController _enemySpawnerController;
@@ -34,6 +39,7 @@ namespace Sapi.SpaceInvader.Gameplay
             return new IController[]
             {
                 new LevelController(),
+                new ScoreController(),
                 new InputController(),
                 new PlayerSpawnerController(),
                 new EnemySpawnerController(),
@@ -43,6 +49,8 @@ namespace Sapi.SpaceInvader.Gameplay
 
         protected override IEnumerator InitSceneObject()
         {
+            _levelController.SetView(_view.LevelView);
+            _scoreController.SetView(_view.ScoreView);
             _inputController.SetView(_view.InputView);
             _playerSpawnerController.SetView(_view.PlayerSpawnerView);
             _enemySpawnerController.SetView(_view.EnemySpawnerView);
@@ -55,10 +63,9 @@ namespace Sapi.SpaceInvader.Gameplay
         {
             _levelController.StartLevel();
 
-            _inputController.Init();
+            _playerSpawnerController.SpawnPlayerPlanes(4);
 
-            _playerSpawnerController.SpawnPlayerPlane(0);
-            _playerSpawnerController.SpawnPlayerPlane(1);
+            _audioController.PlayBgm(AudioBgmName.Gameplay);
 
             yield return null;
         }
